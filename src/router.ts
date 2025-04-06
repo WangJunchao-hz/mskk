@@ -12,6 +12,14 @@ const routes = [
     meta: {
       title: 'VIP 偷卡'
     }
+  },
+  {
+    name: 'tip',
+    path: '/tip',
+    component: () => import('@/view/tip.vue'),
+    meta: {
+      title: '提示'
+    }
   }
 ]
 

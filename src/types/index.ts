@@ -14,3 +14,10 @@ export interface CardGoods {
   num: number
   thumb: string
 }
+
+export interface Config {
+  base: {
+    xue: number
+    lan: number
+  }
+}
