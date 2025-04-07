@@ -7,15 +7,27 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    Base: typeof import('./src/components/base.vue')['default']
+    BaseConfig: typeof import('./src/components/BaseConfig.vue')['default']
+    ConfigBase: typeof import('./src/components/ConfigBase.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    Sc: typeof import('./src/components/sc.vue')['default']
+    SceneConfig: typeof import('./src/components/SceneConfig.vue')['default']
     VanActionBar: typeof import('vant/es')['ActionBar']
     VanActionBarButton: typeof import('vant/es')['ActionBarButton']
+    VanCheckbox: typeof import('vant/es')['Checkbox']
+    VanCheckboxGroup: typeof import('vant/es')['CheckboxGroup']
     VanCol: typeof import('vant/es')['Col']
+    VanCollapse: typeof import('vant/es')['Collapse']
+    VanCollapseItem: typeof import('vant/es')['CollapseItem']
     VanField: typeof import('vant/es')['Field']
     VanForm: typeof import('vant/es')['Form']
+    VanIcon: typeof import('vant/es')['Icon']
+    VanRate: typeof import('vant/es')['Rate']
     VanRow: typeof import('vant/es')['Row']
     VanStepper: typeof import('vant/es')['Stepper']
+    VanSwitch: typeof import('vant/es')['Switch']
     VanTab: typeof import('vant/es')['Tab']
     VanTabs: typeof import('vant/es')['Tabs']
   }

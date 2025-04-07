@@ -5,38 +5,11 @@
       <van-tabs v-model:active="activeTab">
         <van-form>
           <van-tab title="基本设置" name="base">
-            <van-row>
-              <van-col span="8">
-                <van-field label-width="50" name="stepper" label="血量(%)">
-                  <template #input>
-                    <van-stepper
-                      v-model="config.base.xue"
-                      min="0"
-                      max="1"
-                      step="0.01"
-                      decimal-length="2"
-                    />
-                  </template>
-                </van-field>
-              </van-col>
-              <van-col span="8">
-                <van-field label-width="50" name="stepper" label="蓝量(%)">
-                  <template #input>
-                    <van-stepper
-                      v-model="config.base.lan"
-                      min="0"
-                      max="1"
-                      step="0.01"
-                      decimal-length="2"
-                    />
-                  </template>
-                </van-field>
-              </van-col>
-              <van-col span="8">span: 8</van-col>
-              <van-col span="8">span: 8</van-col>
-            </van-row>
+            <base-config :base="config.base" />
           </van-tab>
-          <van-tab title="场景设置" name="scene">内容 2</van-tab>
+          <van-tab title="场景设置" name="scene">
+            <scene-config :scenes="config.scenes" />
+          </van-tab>
         </van-form>
       </van-tabs>
     </div>
@@ -51,23 +24,35 @@
 
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue';
-import { useRouter } from 'vue-router';
 import { showConfirmDialog } from 'vant';
 import { showToast } from 'vant';
 import { Config } from '@/types';
-const router = useRouter();
+import BaseConfig from '@/components/BaseConfig.vue';
+import SceneConfig from '@/components/SceneConfig.vue';
 const activeTab = ref<string>('base');
 const config = ref<Config>({
   base: {
     xue: 0.5,
     lan: 0.2,
+    check_dao_ju: 1,
   },
+  scenes: [],
 });
 onMounted(() => {
   window.airscript.call('mounted', 'onConfig');
 });
 
 const start = () => {
+  const scenes = config.value.scenes;
+  const sortedScenes = [...scenes].sort((a, b) => {
+    // 优先按 checked 状态排序（true 在前）
+    if (a.checked !== b.checked) {
+      return a.checked ? -1 : 1;
+    }
+    // 相同状态下按 sort 升序排列
+    return a.sort - b.sort;
+  });
+  config.value.scenes = sortedScenes;
   window.airscript.call('start', JSON.stringify(config.value));
 };
 
@@ -83,11 +68,17 @@ const stop = () => {
   });
 };
 window.onConfig = (data: Config) => {
-  console.log(JSON.stringify(data));
+  const scenes = data.scenes;
+  const sortedScenes = [...scenes].sort((a, b) => {
+    // 优先按 checked 状态排序（true 在前）
+    if (a.checked !== b.checked) {
+      return a.checked ? -1 : 1;
+    }
+    // 相同状态下按 sort 升序排列
+    return a.sort - b.sort;
+  });
+  data.scenes = sortedScenes;
   config.value = data;
-};
-window.jumpToTip = () => {
-  router.push('tip');
 };
 </script>
 
@@ -119,8 +110,9 @@ window.jumpToTip = () => {
         border-bottom: 1px solid #eff2f5;
       }
       .van-tabs__content {
-        height: calc(100% - 44px);
+        height: calc(100% - 46px);
         background-color: #fff;
+        overflow: auto;
       }
     }
   }
