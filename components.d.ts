@@ -7,12 +7,9 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
-    Base: typeof import('./src/components/base.vue')['default']
     BaseConfig: typeof import('./src/components/BaseConfig.vue')['default']
-    ConfigBase: typeof import('./src/components/ConfigBase.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    Sc: typeof import('./src/components/sc.vue')['default']
     SceneConfig: typeof import('./src/components/SceneConfig.vue')['default']
     VanActionBar: typeof import('vant/es')['ActionBar']
     VanActionBarButton: typeof import('vant/es')['ActionBarButton']
@@ -24,6 +21,8 @@ declare module 'vue' {
     VanField: typeof import('vant/es')['Field']
     VanForm: typeof import('vant/es')['Form']
     VanIcon: typeof import('vant/es')['Icon']
+    VanRadio: typeof import('vant/es')['Radio']
+    VanRadioGroup: typeof import('vant/es')['RadioGroup']
     VanRate: typeof import('vant/es')['Rate']
     VanRow: typeof import('vant/es')['Row']
     VanStepper: typeof import('vant/es')['Stepper']

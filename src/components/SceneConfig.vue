@@ -29,8 +29,22 @@
         </div>
       </template>
       <van-row>
+        <van-row>
+          <van-col span="24">
+            <van-field label-width="56" name="time" label="最长时间">
+              <template #input>
+                <van-radio-group v-model="scene.time" direction="horizontal">
+                  <van-radio :name="3600">1小时</van-radio>
+                  <van-radio :name="7200">2小时</van-radio>
+                  <van-radio :name="10800">3小时</van-radio>
+                  <van-radio :name="14400">4小时</van-radio>
+                </van-radio-group>
+              </template>
+            </van-field>
+          </van-col>
+        </van-row>
         <van-col span="24">
-          <van-field label-width="56" name="checkboxGroup" label="指定怪物">
+          <van-field label-width="56" name="gw_checked" label="指定怪物">
             <template #input>
               <van-checkbox-group
                 v-model="scene.gw_checked"
@@ -46,9 +60,6 @@
             </template>
           </van-field>
         </van-col>
-      </van-row>
-      <van-row>
-        <van-col span="24"> </van-col>
       </van-row>
     </van-collapse-item>
   </van-collapse>

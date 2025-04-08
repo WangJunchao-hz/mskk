@@ -50,7 +50,7 @@ const start = () => {
       return a.checked ? -1 : 1;
     }
     // 相同状态下按 sort 升序排列
-    return a.sort - b.sort;
+    return b.sort - a.sort;
   });
   config.value.scenes = sortedScenes;
   window.airscript.call('start', JSON.stringify(config.value));
@@ -75,7 +75,7 @@ window.onConfig = (data: Config) => {
       return a.checked ? -1 : 1;
     }
     // 相同状态下按 sort 升序排列
-    return a.sort - b.sort;
+    return b.sort - a.sort;
   });
   data.scenes = sortedScenes;
   config.value = data;
