@@ -53,6 +53,11 @@ const start = () => {
     return b.sort - a.sort;
   });
   config.value.scenes = sortedScenes;
+  const checked = sortedScenes.filter((scene) => scene.checked);
+  if (checked.length === 0) {
+    showToast('至少开启一个场景！');
+    return false;
+  }
   window.airscript.call('start', JSON.stringify(config.value));
 };
 

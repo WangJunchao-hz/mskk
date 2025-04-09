@@ -1,0 +1,244 @@
+{
+    "dev": false,
+    "dev_serve": "http://192.168.137.1:4200",
+    "dirName": "mskk",
+    "jc_model": {
+        "param": "model/jian_ce/v1.param",
+        "bin": "model/jian_ce/v1.bin",
+        "nc": 2,
+        "names": [
+            "背对",
+            "面对"
+        ]
+    },
+    "base": {
+        "xue": 0.5,
+        "lan": 0.2,
+        "check_dao_ju": 1
+    },
+    "scenes": [
+        {
+            "name": "龙窟五层",
+            "id": "long5",
+            "checked": true,
+            "time": 14400,
+            "gws": [
+                "蛟龙",
+                "地狱战神"
+            ],
+            "gw_checked": [
+                "蛟龙"
+            ],
+            "keys": [
+                "龙",
+                "蛟"
+            ],
+            "yolo": {
+                "model": {
+                    "param": "model/long5/v1.param",
+                    "bin": "model/long5/v1.bin"
+                },
+                "nc": 0,
+                "names": [
+                    "蛟龙",
+                    "地狱战神"
+                ]
+            },
+            "sort": 7
+        },
+        {
+            "name": "子母河底",
+            "id": "zmhd",
+            "checked": true,
+            "time": 10800,
+            "gws": [
+                "蚌精",
+                "碧水夜叉",
+                "鲛人"
+            ],
+            "gw_checked": [
+                "蚌精",
+                "碧水夜叉"
+            ],
+            "keys": [
+                "蚌",
+                "精",
+                "碧",
+                "水",
+                "夜",
+                "叉"
+            ],
+            "yolo": {
+                "model": {
+                    "param": "model/zmhd/model.ncnn.param",
+                    "bin": "model/zmhd/model.ncnn.bin"
+                },
+                "nc": 0,
+                "names": []
+            },
+            "sort": 6
+        },
+        {
+            "name": "龙窟六层",
+            "id": "long6",
+            "checked": false,
+            "time": 10800,
+            "gws": [
+                "巡游天神",
+                "雨师"
+            ],
+            "gw_checked": [
+                "巡游天神",
+                "雨师"
+            ],
+            "keys": [
+                "巡",
+                "雨",
+                "游",
+                "天",
+                "神",
+                "师",
+                "喽",
+                "啰"
+            ],
+            "yolo": {
+                "model": {
+                    "param": "model/long6/v1.param",
+                    "bin": "model/long6/v1.bin"
+                },
+                "nc": 0,
+                "names": []
+            },
+            "sort": 4
+        },
+        {
+            "name": "凤巢六层",
+            "id": "feng6",
+            "checked": false,
+            "time": 10800,
+            "gws": [
+                "风伯",
+                "芙蓉仙子"
+            ],
+            "gw_checked": [
+                "风伯",
+                "芙蓉仙子"
+            ],
+            "keys": [
+                "风",
+                "伯",
+                "芙",
+                "蓉",
+                "仙",
+                "子",
+                "超",
+                "量",
+                "暴",
+                "击",
+                "喽",
+                "啰"
+            ],
+            "yolo": {
+                "model": {
+                    "param": "model/feng6/v1.param",
+                    "bin": "model/feng6/v1.bin"
+                },
+                "nc": 2,
+                "names": [
+                    "芙蓉仙子",
+                    "风伯"
+                ]
+            }
+        },
+        {
+            "name": "凤巢五层",
+            "id": "feng5",
+            "checked": false,
+            "time": 10800,
+            "gws": [
+                "凤凰",
+                "天将",
+                "金翼"
+            ],
+            "gw_checked": [
+                "凤凰",
+                "天将",
+                "金翼"
+            ],
+            "keys": [
+                "天",
+                "将",
+                "金",
+                "翼",
+                "凤",
+                "凰"
+            ],
+            "yolo": {
+                "model": {
+                    "param": "model/feng5/model.ncnn.param",
+                    "bin": "model/feng5/model.ncnn.bin"
+                },
+                "nc": 0,
+                "names": []
+            }
+        },
+        {
+            "name": "无名鬼城",
+            "id": "wmgc",
+            "checked": false,
+            "time": 10800,
+            "gws": [
+                "幽灵",
+                "吸血鬼"
+            ],
+            "gw_checked": [
+                "幽灵",
+                "吸血鬼"
+            ],
+            "keys": [
+                "幽",
+                "灵",
+                "吸",
+                "血",
+                "鬼",
+                "喽",
+                "啰"
+            ],
+            "yolo": {
+                "model": {
+                    "param": "model/wmgc/model.ncnn.param",
+                    "bin": "model/wmgc/model.ncnn.bin"
+                },
+                "nc": 0,
+                "names": []
+            }
+        },
+        {
+            "name": "麒麟山",
+            "id": "qls",
+            "checked": false,
+            "time": 10800,
+            "gws": [
+                "鼠先锋",
+                "百足战神"
+            ],
+            "gw_checked": [
+                "鼠先锋",
+                "百足战神"
+            ],
+            "keys": [
+                "鼠",
+                "先",
+                "锋"
+            ],
+            "yolo": {
+                "model": {
+                    "param": "model/qls/model.ncnn.param",
+                    "bin": "model/qls/model.ncnn.bin"
+                },
+                "nc": 0,
+                "names": []
+            }
+        }
+    ]
+}
