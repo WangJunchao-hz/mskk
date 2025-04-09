@@ -29,7 +29,7 @@ class Main:
     def __init__(self):
         """实例初始化"""
         Server.init_app()
-        screen.set_ori_change_listener(self.on_ori_change)
+        # screen.set_ori_change_listener(self.on_ori_change)
 
     def on_ori_change(self, w, h):
         if w != Utils.sys_info["screen_w"]:
@@ -52,6 +52,7 @@ class Main:
             self.stop()
         if k == "tip_mounted":
             self.tip_fun_name = v
+            Server.tip_fun_name = v
 
     def start(self, config):
         Server.config = Utils.json_to_dict(config)
@@ -127,8 +128,4 @@ class Main:
         w.gravity(80 | 3)
         w.show()
         self.Tip_win = w
-
-    def push_log(self, log="", zj=""):
-        if self.tip_fun_name:
-            data = {"zhan_ji": zj, "log": log}
-            Utils.eval_js(self.Tip_win, self.tip_fun_name, data)
+        Server.tip_w = w

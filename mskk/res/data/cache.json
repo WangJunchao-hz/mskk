@@ -1,3 +1,8 @@
 {
-    "date": "2025-04-09"
+    "date": "2025-04-09",
+    "last_use_syx": {
+        "scene_id": "long5",
+        "time": 1744187971.7401361,
+        "expire": true
+    }
 }

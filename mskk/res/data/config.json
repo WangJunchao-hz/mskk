@@ -2,6 +2,7 @@
     "dev": false,
     "dev_serve": "http://192.168.137.1:4200",
     "dirName": "mskk",
+    "syx_time": 1440,
     "jc_model": {
         "param": "model/jian_ce/v1.param",
         "bin": "model/jian_ce/v1.bin",
