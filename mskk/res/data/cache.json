@@ -1,8 +1,12 @@
 {
-    "date": "2025-04-09",
-    "last_use_syx": {
-        "scene_id": "long5",
-        "time": 1744187971.7401361,
-        "expire": true
-    }
+    "date": "2025-04-10",
+    "long5": {
+        "hz": [],
+        "flish": false,
+        "time_over_num": 0
+    },
+    "total_hz": 0,
+    "card_num": 0,
+    "last_id": "long5",
+    "last_time": 1009.4592730998993
 }

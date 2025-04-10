@@ -33,5 +33,7 @@ export interface Scene {
   sort: number
   gws: string[]
   gw_checked: string[]
+  tp_checked: string[],
+  tp_keys: string[],
   [name: string]: any
 }

@@ -3,6 +3,7 @@ import time
 from ascript.android import screen
 from ascript.android.system import R
 from ascript.android.ui import WebWindow
+from ascript.android import system
 
 from .scenes.long5 import Long5
 from .server import Server
@@ -29,7 +30,7 @@ class Main:
     def __init__(self):
         """实例初始化"""
         Server.init_app()
-        # screen.set_ori_change_listener(self.on_ori_change)
+        screen.set_ori_change_listener(self.on_ori_change)
 
     def on_ori_change(self, w, h):
         if w != Utils.sys_info["screen_w"]:
@@ -66,6 +67,10 @@ class Main:
         if Utils.sys_info["screen_w"] < Utils.sys_info["screen_h"]:
             Utils.eval_js(self.Win, "toast", "请横屏使用！")
             return False
+        app_package = system.get_foreground_app()
+        if app_package and not "mhxyhtb" in app_package:
+            Utils.eval_js(self.Win, "toast", "未打开游戏！")
+            return False
         if "total_hz" in Server.cache and Server.cache["total_hz"] >= 12:
             Utils.eval_js(
                 self.Win, "toast", "恭喜发财！今天大丰收(已偷满12个环状)，明天再来吧！"
@@ -80,10 +85,13 @@ class Main:
             self.run_scene()
 
     def run_scene(self):
-        print(f"运行场景：{Server.active_scene}")
-        if Server.active_scene["id"] in self.sceneDict:
-            Server.active_scene["start_time"] = time.time()
-            self.sceneDict[Server.active_scene["id"]]()
+        while True:
+            if "stop" not in Server.active_scene or Server.active_scene["stop"]:
+                print(f"运行场景：{Server.active_scene}")
+                if Server.active_scene["id"] in self.sceneDict:
+                    Server.active_scene["start_time"] = time.time()
+                    Server.active_scene["stop"] = False
+                    self.sceneDict[Server.active_scene["id"]]()
 
     def get_config(self, fun_name):
         Utils.eval_js(self.Win, fun_name, Server.config)
@@ -98,7 +106,7 @@ class Main:
             ui_path = Server.config["dev_serve"]
         w = WebWindow(ui_path)
         w.tunner(self.tunnel)
-        w.size('90vw', '90vh')
+        w.size("90vw", "90vh")
         w.background("#00000000")
         w.show()
         self.Win = w
@@ -107,9 +115,9 @@ class Main:
             if not self.is_win_close:
                 if Utils.sys_info["screen_change"]:
                     if Utils.sys_info["vertical"]:
-                        w.size('91vw', '91vh')
+                        w.size("91vw", "91vh")
                     else:
-                        w.size('89vw', '89vh')
+                        w.size("89vw", "89vh")
                     Utils.sys_info["screen_change"] = False
             else:
                 break

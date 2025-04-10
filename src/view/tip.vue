@@ -30,13 +30,14 @@ window.onLogs = (data: { zhan_ji: string; log: string }) => {
 .tip {
   position: fixed;
   left: 0;
+  right: 0;
   bottom: 0;
+  top: 0;
   padding: 6px;
-  width: 300px;
-  height: 88px;
   background-color: rgba(0, 0, 0, 0.3);
   .item {
     color: #fff;
+    font-size: 8px;
   }
 }
 </style>

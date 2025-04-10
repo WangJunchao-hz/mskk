@@ -38,6 +38,7 @@
                   <van-radio :name="7200">2小时</van-radio>
                   <van-radio :name="10800">3小时</van-radio>
                   <van-radio :name="14400">4小时</van-radio>
+                  <van-radio :name="0">偷满为止</van-radio>
                 </van-radio-group>
               </template>
             </van-field>
@@ -55,6 +56,23 @@
                   :name="gw"
                   shape="square"
                   >{{ gw }}</van-checkbox
+                >
+              </van-checkbox-group>
+            </template>
+          </van-field>
+        </van-col>
+        <van-col span="24">
+          <van-field label-width="56" name="tp_checked" label="指定逃跑">
+            <template #input>
+              <van-checkbox-group
+                v-model="scene.tp_checked"
+                direction="horizontal"
+              >
+                <van-checkbox
+                  v-for="w in ['护佑', '精英']"
+                  :name="w"
+                  shape="square"
+                  >{{ w }}</van-checkbox
                 >
               </van-checkbox-group>
             </template>

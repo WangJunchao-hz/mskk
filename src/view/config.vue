@@ -53,7 +53,27 @@ const start = () => {
     return b.sort - a.sort;
   });
   config.value.scenes = sortedScenes;
-  const checked = sortedScenes.filter((scene) => scene.checked);
+  const checked = [];
+  sortedScenes.forEach((scene) => {
+    if (scene.checked) {
+      checked.push(scene);
+    }
+    const keys: string[] = [];
+    if (scene.gw_checked && scene.gw_checked.length) {
+      scene.gw_checked.forEach((w) => {
+        keys.push(...[...w]);
+      });
+    }
+    scene.keys = keys;
+    const tp_keys: string[] = [];
+    if (scene.tp_checked && scene.tp_checked.length) {
+      scene.tp_checked.forEach((w) => {
+        tp_keys.push(...[...w]);
+      });
+    }
+    scene.tp_keys = tp_keys;
+  });
+
   if (checked.length === 0) {
     showToast('至少开启一个场景！');
     return false;

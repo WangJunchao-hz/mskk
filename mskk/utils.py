@@ -1,9 +1,11 @@
 import json
+import os
 import random
-import time
 import re
-from ascript.android import action, system
-from ascript.android.screen import FindImages, Ocr, Colors, FindColors
+import time
+
+from ascript.android import action, screen, system
+from ascript.android.screen import Colors, FindColors, FindImages, Ocr
 from ascript.android.system import R
 
 
@@ -120,6 +122,8 @@ class Utils:
                         break
                 if not flag:
                     is_success = False
+                if key == 'fire_jc_txt':
+                    print('is_success',flag,is_success)
         return is_success
 
     def get_tpl(key):
@@ -294,3 +298,29 @@ class Utils:
                 return 1
             else:
                 return 0
+
+    def saveImg(name, dirName):
+        """保存图片至sd卡"""
+        print(R.sd(f"{dirName}/{name}.png"))
+        screen.bitmap_to_file(R.sd(f"{dirName}/{name}.png"))
+
+    def mkSDDir(name):
+        """在sd卡创建一个文件夹"""
+        path = R.sd(name)
+        if not os.path.exists(path):
+            os.mkdir(path)
+            print(f"Utils.mkSDDir文件夹{name}创建成功")
+        else:
+            print(f"Utils.mkSDDir文件夹{name}已存在")
+
+    def is_include(a, b, qz=(10, 10)):
+        """判断a是否在b中某个坐标附近 默认在附近20坐标差"""
+        flag = False
+        if a and b:
+            for p in b:
+                difX = abs(a[0] - p[0])
+                difY = abs(a[1] - p[1])
+                if difX <= qz[0] and difY <= qz[1]:
+                    flag = True
+                    break
+        return flag
